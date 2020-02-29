@@ -1,0 +1,20 @@
+
+
+github config:
+
+git config --global user.name "Mahmud Hasan"
+git config --global user.email "mhasanusa@hotmail.com"
+
+git config --list
+
+
+code --help	## use this code in Windows CMD, to check the VS Code editor
+
+git config --global core.editor "code --wait"  (worked)
+
+##git config --global core.editor "'C:\Program Files\Microsoft VS Code\Code.exe' -w" (not tested)
+
+## follwoing line will open .gitconfig file in the VSCode.
+git config --global -e
+
+
