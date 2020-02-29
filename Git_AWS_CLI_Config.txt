@@ -18,3 +18,18 @@ git config --global core.editor "code --wait"  (worked)
 git config --global -e
 
 
+
+## create a new repository on the command line
+
+echo "# My_Code" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/mhasan2k/My_Code.git
+git push -u origin master
+
+
+## push an existing repository from the command line
+
+git remote add origin https://github.com/mhasan2k/My_Code.git
+git push -u origin master
