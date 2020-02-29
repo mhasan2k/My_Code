@@ -1,0 +1,113 @@
+# configuring the AWS CLI:
+aws configure
+us-east-1
+json
+
+# find user info:
+aws iam help
+aws iam list-users
+
+# Create a S3 Bucket
+aws s3 mb s3://bucket-name
+aws s3 ls       #List Your Buckets
+
+# The following command lists all objects and folders in a bucket.
+aws s3 ls s3://bucket-name
+aws s3 ls s3://bucket-name/path/
+
+# Delete a Bucket
+aws s3 rb s3://bucket-name
+
+# The following example deletes all objects and subfolders in the bucket and then removes the bucket.
+aws s3 rb s3://bucket-name --force
+
+# copy file from loacl to S3
+aws s3 cp file.txt s3://my-bucket/
+
+// Delete local file
+$ rm ./MyFile1.txt
+
+// Attempt sync without --delete option - nothing happens
+$ aws s3 sync . s3://my-bucket/path
+
+// Sync with deletion - object is deleted from bucket
+$ aws s3 sync . s3://my-bucket/path --delete
+delete: s3://my-bucket/path/MyFile1.txt
+
+// Delete object from bucket
+$ aws s3 rm s3://my-bucket/path/MySubdirectory/MyFile3.txt
+delete: s3://my-bucket/path/MySubdirectory/MyFile3.txt
+
+// Sync with deletion - local file is deleted
+$ aws s3 sync s3://my-bucket/path . --delete
+delete: MySubdirectory\MyFile3.txt
+
+// Sync with Infrequent Access storage class
+$ aws s3 sync . s3://my-bucket/path --storage-class STANDARD_IA
+
+
+
+Local directory contains 3 files:
+MyFile1.txt
+MyFile2.rtf
+MyFile88.txt
+'''
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt"
+upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
+'''
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt"
+upload: MyFile1.txt to s3://my-bucket/path/MyFile1.txt
+upload: MyFile88.txt to s3://my-bucket/path/MyFile88.txt
+upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
+'''
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt" --exclude "MyFile?.txt"
+upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
+upload: MyFile88.txt to s3://my-bucket/path/MyFile88.txt
+
+
+Assume local directory and s3://my-bucket/path currently in sync and each contains 3 files:
+MyFile1.txt
+MyFile2.rtf
+MyFile88.txt
+'''
+// Delete local .txt files
+$ rm *.txt
+
+// Sync with delete, excluding files that match a pattern. MyFile88.txt is deleted, while remote MyFile1.txt is not.
+$ aws s3 sync . s3://my-bucket/path --delete --exclude "my-bucket/path/MyFile?.txt"
+delete: s3://my-bucket/path/MyFile88.txt
+'''
+// Delete MyFile2.rtf
+$ aws s3 rm s3://my-bucket/path/MyFile2.rtf
+
+// Sync with delete, excluding MyFile2.rtf - local file is NOT deleted
+$ aws s3 sync s3://my-bucket/path . --delete --exclude "./MyFile2.rtf"
+download: s3://my-bucket/path/MyFile1.txt to MyFile1.txt
+'''
+// Sync with delete, local copy of MyFile2.rtf is deleted
+$ aws s3 sync s3://my-bucket/path . --delete
+delete: MyFile2.rtf
+
+// Copy MyFile.txt in current directory to s3://my-bucket/path
+$ aws s3 cp MyFile.txt s3://my-bucket/path/
+
+// Move all .jpg files in s3://my-bucket/path to ./MyDirectory
+$ aws s3 mv s3://my-bucket/path ./MyDirectory --exclude "*" --include "*.jpg" --recursive
+
+// List the contents of my-bucket
+$ aws s3 ls s3://my-bucket
+
+// List the contents of path in my-bucket
+$ aws s3 ls s3://my-bucket/path/
+
+// Delete s3://my-bucket/path/MyFile.txt
+$ aws s3 rm s3://my-bucket/path/MyFile.txt
+
+// Delete s3://my-bucket/path and all of its contents
+$ aws s3 rm s3://my-bucket/path --recursive
+
+
+
+
+
+
