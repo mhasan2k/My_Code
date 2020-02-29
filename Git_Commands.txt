@@ -75,22 +75,42 @@ git clone ../remote_repo.git .      # . will clone into current directory
 
 # viewing information about remote repo:
 git remote -v
-git branch -a
+git branch -a   # to see all existing branches
 
 # to see the diferences with remote repo:
 git diff
 
 # push to remote repo:
-git pull origin master
+git pull origin master  # get the latest if there is any changes from other developer
 git push origin master
 
-#
+## common workflow for git:
+# create a branch for desired feature:
+git branch              # will show all local branches
+git branch calc-divide
+git checkout calc-divide    # to start using this branch
 
+git add -A
+git commit -m "new comment"
 
+# after committing push branch to remote:
+git push -u origin calc-divide
+git branch -a
 
+# step to merge calc-divide brance to master branch
+git checkout master
+git pull origin master
+git branch --merged     # will show the branch status
+git merge calc-divide
+git push origin master
 
+# deleting a branch
+git branch --merged         # will show the branch status
+git branch -d calc-divide   # delete the branch localy
+git branch -a
+git push origin --delete calc-divide # delete the branch in remote repo
 
-# 
+# END
 
 
 
