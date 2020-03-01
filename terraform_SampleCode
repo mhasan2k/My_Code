@@ -1,0 +1,18 @@
+# check the terraform version
+terraform version
+
+# go to terraform console:
+terraform console
+
+> var.myvar
+or
+> "${var.myvar}"
+
+# apply terraform
+terraform plan
+terraform plan -out <fileName>; terraform apply <fileName>; rm <fileName>
+terraform apply
+
+# destroy terraform
+terraform destroy
+
