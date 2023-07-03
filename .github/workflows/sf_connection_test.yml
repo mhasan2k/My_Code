@@ -1,5 +1,16 @@
 # This is a basic workflow to help you get started with Actions
 name: Snowflake Connection Test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on any branch or tag commit 
+  push:
+    branches:
+      - "*"
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 env:
   SNOWSQL_DEST: ~/snowflake
   SNOWSQL_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
@@ -10,7 +21,7 @@ env:
   SNOWSQL_DATABASE: ${{ secrets.SF_DATABASE }}
   SNOWSQL_SCHEMA: ${{ secrets.SF_SCHEMA }}
   
-on: push                                                  
+                                               
 jobs:                         
   executequery:                           
     name: Install SnowSQL                          
