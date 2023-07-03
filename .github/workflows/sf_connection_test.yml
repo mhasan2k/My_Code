@@ -5,6 +5,10 @@ env:
   SNOWSQL_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
   SNOWSQL_USER: ${{ secrets.SF_USERNAME }}
   SNOWSQL_PWD: ${{ secrets.SF_PASSWORD }}
+  SNOWSQL_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+  SNOWSQL_ROLE: ${{ secrets.SF_ROLE }}
+  SNOWSQL_DATABASE: ${{ secrets.SF_DATABASE }}
+  SNOWSQL_SCHEMA: ${{ secrets.SF_SCHEMA }}
   
 on: push                                                  
 jobs:                         
