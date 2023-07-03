@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 name: Snowflake Connection Test
-with:
+env:
   SNOWSQL_DEST: ~/snowflake
   SNOWSQL_ACCOUNT: {{ secrets.SF_ACCOUNT }}
   SNOWSQL_USER: {{ secrets.SF_USERNAME }}
