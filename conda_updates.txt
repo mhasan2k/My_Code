@@ -1,0 +1,102 @@
+
+#> conda --version
+#> pyhon --version
+
+#> conda update conda
+or
+#> conda update --all
+
+#> conda create --name py38 --override-channels -c https://repo.anaconda.com/pkgs/snowflake python=3.8 numpy pandas
+
+#> conda activate py38
+
+#> conda install --name py38 snowflake-snowpark-python
+
+#> conda install --name py38 snowflake-snowpark-python pandas
+
+#> conda install -n py38 pip
+
+#> conda install -n py38 notebook
+
+
+#> conda install -n py38 jupyter notebook
+
+#> conda install -n py38 openjdk
+
+#> conda install -n py38 pyspark
+
+
+
+#> conda install -n py38 snowflake-connector-python
+
+
+
+import pyspark
+from pyspark.sql import SparkSession
+
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+
+df = spark.read.json('sample1.json', )
+
+
+/////////////////////////
+
+#> conda activate py311
+
+#> conda install --name py311 snowflake-snowpark-python
+
+#> conda install --name py311 snowflake-snowpark-python pandas
+
+#> conda install -n py311 pip
+
+#> conda install -n py311 notebook
+
+#> conda install -n py311 jupyter notebook
+
+#> conda install -n py311 openjdk
+
+#> conda install -n py311 pyspark
+
+#> conda install -n py311 numpy
+
+#> conda install -n py311 streamlit
+
+
+#> pip install --upgrade pip
+#> pip install -r requirements.txt
+#> conda install -n py311 --yes --file requirements.txt
+
+
+/////////////////////////
+
+#> conda activate py311
+
+#> conda update --namey py311 snowflake-snowpark-python
+
+#> conda update --name py311 snowflake-snowpark-python pandas
+
+#> conda update -n py311 pip
+
+#> conda update -n py311 notebook
+
+#> conda update -n py311 jupyter notebook
+
+#> conda update -n py311 openjdk
+
+#> conda update -n py311 pyspark
+
+#> conda update -n py311 numpy pandas
+
+#> conda update -n py311 streamlit
+
+
+#> pip install --upgrade pip
+#> pip install -r requirements.txt
+#> conda install -n py311 --yes --file requirements.txt
+
+
+
+
+
+
+
